@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------
  [Master Stylesheet]
 
-  Project:	Star Admin2 
+  Project:	Star Admin2
   Version:	1.2.1
 -------------------------------------------------------------------*/
 /*-------------------------------------------------------------------
@@ -28857,7 +28857,6 @@ div.tagsinput span.tag a {
 }
 
 .page-body-wrapper {
-  min-height: calc(100vh - 97px);
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
@@ -28869,14 +28868,12 @@ div.tagsinput span.tag a {
 
 .page-body-wrapper.full-page-wrapper {
   width: 100%;
-  min-height: 100vh;
   padding-top: 0;
 }
 
 .main-panel {
   transition: width 0.25s ease, margin 0.25s ease;
   width: calc(100% - 220px);
-  min-height: calc(100vh - 97px);
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
@@ -28906,7 +28903,7 @@ div.tagsinput span.tag a {
 
 /* Sidebar */
 .sidebar {
-  min-height: calc(100vh - 97px);
+  min-height: calc(100vh - 167px);
   background: #F4F5F7;
   font-family: "Manrope", sans-serif;
   font-weight: 500;
