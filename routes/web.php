@@ -19,6 +19,8 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/redirect',[HomeController::class,'redirect']);
 Route::get('/users',[AdminController::class,'users']);
 Route::get('/deleteUsers/{id}',[AdminController::class,'deleteUsers']);
+Route::get('/foodMenu',[AdminController::class,'foodMenu']);
+Route::post('/uploadFoodMenu',[AdminController::class,'uploadFoodMenu']);
 
 Route::middleware([
     'auth:sanctum',

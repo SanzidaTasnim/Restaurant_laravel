@@ -35,6 +35,12 @@
           </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{url('/foodMenu')}}">
+              <i class="menu-icon mdi mdi-layers-outline"></i>
+              <span class="menu-title">Food Menu</span>
+            </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="menu-icon mdi mdi-card-text-outline"></i>
             <span class="menu-title">Reservations</span>
@@ -50,12 +56,6 @@
           <a class="nav-link" href="#">
             <i class="menu-icon mdi mdi-table"></i>
             <span class="menu-title">Orders</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">
-            <i class="menu-icon mdi mdi-layers-outline"></i>
-            <span class="menu-title">Foods</span>
           </a>
         </li>
         <li class="nav-item">

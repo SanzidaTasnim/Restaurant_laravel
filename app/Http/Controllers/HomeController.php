@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Menu;
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.home');
+        $menu = menu::all();
+        return view('frontend.home',compact('menu'));
     }
     public function redirect()
     {
+        $menu = menu::all();
         $usertype = Auth::user()->usertype;
         if($usertype == 1)
         {
@@ -20,7 +22,7 @@ class HomeController extends Controller
         }
         else
         {
-            return view('frontend.home');
+            return view('frontend.home',compact('menu'));
         }
     }
 }
