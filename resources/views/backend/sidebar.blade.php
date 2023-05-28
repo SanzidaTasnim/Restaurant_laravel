@@ -69,7 +69,7 @@
                     <a class="nav-link" href="{{url('/add_chefs')}}">Add Chefs</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('/')}}">All Chefs</a>
+                  <a class="nav-link" href="{{url('/view_chefs')}}">All Chefs</a>
                 </li>
               </ul>
             </div>

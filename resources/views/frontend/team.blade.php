@@ -17,8 +17,12 @@
                                     <div class="team-item">
                                         <h4>You Can Follow Me</h4>
                                         <ul class="social-icon">
-                                                <li><a href="#" class="fa fa-linkedin-square"></a></li>
-                                                <li><a href="#" class="fa fa-envelope-o"></a></li>
+                                            <li>
+                                                <a href="#" class="fa fa-linkedin-square"></a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="fa fa-envelope-o"></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

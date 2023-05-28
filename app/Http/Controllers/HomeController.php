@@ -17,6 +17,7 @@ class HomeController extends Controller
     public function redirect()
     {
         $menu = menu::all();
+        $chefs = chefs::all();
         $usertype = Auth::user()->usertype;
         if($usertype == 1)
         {
@@ -24,7 +25,7 @@ class HomeController extends Controller
         }
         else
         {
-            return view('frontend.home',compact('menu'));
+            return view('frontend.home',compact('menu','chefs'));
         }
     }
 }

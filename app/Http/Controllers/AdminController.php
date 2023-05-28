@@ -65,12 +65,17 @@ class AdminController extends Controller
     {
         $data = menu::find($id);
         $image = $request->image;
-        $imageName = time().'.'.$image->getClientOriginalExtension();
-        $request->image->move('foodimage',$imageName);
+
+        if($image)
+        {
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('foodimage',$imageName);
+            $data->image = $imageName;
+        }
+
         $data->title = $request->title;
         $data->content = $request->content;
         $data->price = $request->price;
-        $data->image = $imageName;
 
         $data->save();
         return redirect()->back();
@@ -111,6 +116,41 @@ class AdminController extends Controller
         $chefs->image = $imageName;
 
         $chefs->save();
+        return redirect()->back();
+    }
+    public function view_chefs()
+    {
+        $chefs = chefs::all();
+        return view('backend.view_chefs',compact('chefs'));
+    }
+    public function chef_delete($id)
+    {
+        $chef = chefs::find($id);
+
+        $chef->delete();
+        return redirect()->back();
+    }
+    public function chef_update($id)
+    {
+        $chef = chefs::find($id);
+        return view('backend.updated_chef', compact('chef'));
+    }
+    public function updated_chefs(Request $request,$id)
+    {
+        $chef = chefs::find($id);
+
+        $image = $request->image;
+        if($image)
+        {
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('chefImage',$imageName);
+            $chef->image = $imageName;
+        }
+        $chef->name = $request->name;
+        $chef->specialist = $request->specialist;
+
+
+        $chef->save();
         return redirect()->back();
     }
 }
