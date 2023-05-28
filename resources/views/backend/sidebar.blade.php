@@ -35,16 +35,44 @@
           </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{url('/foodMenu')}}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="menu-icon mdi mdi-layers-outline"></i>
-              <span class="menu-title">Food Menu</span>
+              <span class="menu-title">Menu</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="tables">
+              <ul class="nav flex-column sub-menu" style="list-style: none;">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/foodMenu')}}">Add Menu</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('/allMenu')}}">All Menu</a>
+                </li>
+              </ul>
+            </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ url('/reservation')}}">
             <i class="menu-icon mdi mdi-card-text-outline"></i>
             <span class="menu-title">Reservations</span>
           </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#chefs" aria-expanded="false" aria-controls="tables">
+              <i class="menu-icon mdi mdi-file-document"></i>
+              <span class="menu-title">Chefs</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="chefs">
+              <ul class="nav flex-column sub-menu" style="list-style: none;">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/add_chefs')}}">Add Chefs</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('/')}}">All Chefs</a>
+                </li>
+              </ul>
+            </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
@@ -58,12 +86,7 @@
             <span class="menu-title">Orders</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
-            <i class="menu-icon mdi mdi-file-document"></i>
-            <span class="menu-title">Chefs</span>
-          </a>
-        </li>
+
       </ul>
     </nav>
     <!-- partial -->

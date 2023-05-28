@@ -9,63 +9,26 @@
                    </div>
               </div>
 
-              <div class="col-md-4 col-sm-4">
-                   <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="frontend/images/team-image1.jpg" class="img-responsive" alt="">
-                             <div class="team-hover">
-                                  <div class="team-item">
-                                       <h4>Duis vel lacus id magna mattis vehicula</h4>
-                                       <ul class="social-icon">
-                                            <li><a href="#" class="fa fa-linkedin-square"></a></li>
-                                            <li><a href="#" class="fa fa-envelope-o"></a></li>
-                                       </ul>
-                                  </div>
-                             </div>
-                   </div>
-                   <div class="team-info">
-                        <h3>New Catherine</h3>
-                        <p>Kitchen Officer</p>
-                   </div>
-              </div>
-
-              <div class="col-md-4 col-sm-4">
-                   <div class="team-thumb wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="frontend/images/team-image2.jpg" class="img-responsive" alt="">
-                             <div class="team-hover">
-                                  <div class="team-item">
-                                       <h4>Cras suscipit neque quis odio feugiat</h4>
-                                       <ul class="social-icon">
-                                            <li><a href="#" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" class="fa fa-flickr"></a></li>
-                                       </ul>
-                                  </div>
-                             </div>
-                   </div>
-                   <div class="team-info">
-                        <h3>Lindsay Perlen</h3>
-                        <p>Owner &amp; Manager</p>
-                   </div>
-              </div>
-
-              <div class="col-md-4 col-sm-4">
-                   <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="frontend/images/team-image3.jpg" class="img-responsive" alt="">
-                             <div class="team-hover">
-                                  <div class="team-item">
-                                       <h4>Etiam auctor enim tristique faucibus</h4>
-                                       <ul class="social-icon">
-                                            <li><a href="#" class="fa fa-github"></a></li>
-                                            <li><a href="#" class="fa fa-google"></a></li>
-                                       </ul>
-                                  </div>
-                             </div>
-                   </div>
-                   <div class="team-info">
-                        <h3>Isabella Grace</h3>
-                        <p>Pizza Specialist</p>
-                   </div>
-              </div>
-
+              @foreach($chefs as $chef)
+                <div class="col-md-4 col-sm-4">
+                    <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
+                            <img style="height: 500px;" src="chefImage/{{$chef->image}}" class="img-responsive" alt="Chef_image">
+                                <div class="team-hover">
+                                    <div class="team-item">
+                                        <h4>You Can Follow Me</h4>
+                                        <ul class="social-icon">
+                                                <li><a href="#" class="fa fa-linkedin-square"></a></li>
+                                                <li><a href="#" class="fa fa-envelope-o"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="team-info">
+                            <h3>{{$chef->name}}</h3>
+                            <p>{{$chef->specialist}}</p>
+                    </div>
+                </div>
+              @endforeach
          </div>
     </div>
 </section>

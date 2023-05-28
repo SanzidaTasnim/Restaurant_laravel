@@ -51,7 +51,7 @@
               </ul>
 
               <ul class="nav navbar-nav navbar-right">
-                   <a href="#footer" class="section-btn">Reserve a table</a>
+                   <a href="#contact" class="section-btn">Reserve a table</a>
               </ul>
          </div>
 

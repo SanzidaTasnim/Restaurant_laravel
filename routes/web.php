@@ -17,10 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index']);
 Route::get('/redirect',[HomeController::class,'redirect']);
+
+
 Route::get('/users',[AdminController::class,'users']);
 Route::get('/deleteUsers/{id}',[AdminController::class,'deleteUsers']);
 Route::get('/foodMenu',[AdminController::class,'foodMenu']);
 Route::post('/uploadFoodMenu',[AdminController::class,'uploadFoodMenu']);
+Route::get('/allMenu',[AdminController::class,'allMenu']);
+Route::get('/menu_delete/{id}',[AdminController::class,'menu_delete']);
+Route::get('/menu_update/{id}',[AdminController::class,'menu_update']);
+Route::post('/updated_menu/{id}',[AdminController::class,'updated_menu']);
+Route::get('/reservation',[AdminController::class,'reservation']);
+Route::post('/view_reservation',[AdminController::class,'view_reservation']);
+Route::get('/add_chefs',[AdminController::class,'add_chefs']);
+Route::post('/uploadChefs',[AdminController::class,'uploadChefs']);
 
 Route::middleware([
     'auth:sanctum',
