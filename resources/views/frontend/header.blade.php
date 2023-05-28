@@ -1,3 +1,4 @@
+
 <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
     <div class="container">
          <div class="navbar-header">
@@ -19,6 +20,19 @@
                    <li><a href="#team" class="smoothScroll">Chef</a></li>
                    <li><a href="#menu" class="smoothScroll">Menu</a></li>
                    <li><a href="#contact" class="smoothScroll">Contact</a></li>
+                   <li style="display: flex;">
+                        <a href="#" class="smoothScroll">Cart</a>
+                        <div class="cart">
+                            @auth
+                                <span class="count">{{$count}}</span>
+                                <i class="material-icons" style="color: cadetblue;transform:translateY(8px)">shopping_cart</i>
+                            @endauth
+                            @guest
+                                <span class="count">0</span>
+                                <i class="material-icons" style="color: cadetblue;transform:translateY(8px)">shopping_cart</i>
+                            @endguest
+                        </div>
+                   </li>
                    @if (Route::has('login'))
                           @auth
                               <li class="nav-item dropdown border-left">

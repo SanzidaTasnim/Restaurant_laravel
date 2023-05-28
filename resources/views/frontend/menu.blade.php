@@ -10,7 +10,7 @@
               </div>
 
               @foreach($menu as $item)
-              <form action="" method="post">
+              <form action="{{url('/addCart',$item->id)}}" method="post">
                 @csrf
                 <div class="col-md-4 col-sm-6">
                     <!-- MENU THUMB -->
@@ -20,21 +20,20 @@
 
                             <div class="menu-info">
                                 <div class="menu-item">
-                                        <h3>{{$item->title}}</h3>
-                                        <p>{{$item->content}}</p>
+                                    <h3>{{$item->title}}</h3>
+                                    <p>{{$item->content}}</p>
 
-                                        <div class="cart" style="display: flex; width: 100px; justify-content: space-between;">
-                                            <div class=”btn” style="width: 20px;height: 20px;border-radius: 50%; background-color: #d9d9d9; text-align: center; font-weight: bold;color: #333" onclick="increment()">+</div>
-                                            <div class=”count”>
-                                                <input type="number" min='1' value="1" style="width: 30px; border: 0; text-align: center; color: #333;" name="quantity" id="quantity">
-                                            </div>
-                                            <div class=”btn” style="width: 20px;height: 20px;border-radius: 50%; background-color: #d9d9d9; text-align: center; font-weight: bold; color: #333" onclick="decrement()">-</div>
+                                    <div class="cart" style="display: flex; width: 100px; justify-content: space-between;">
+                                        <div class=”btn” style="width: 20px;height: 20px;border-radius: 50%; background-color: #d9d9d9; text-align: center; font-weight: bold;color: #333" onclick="increaseQuantity({{$item->id}})">+</div>
+                                        <div class=”count”>
+                                            <input type="number" min='1' value="1" style="width: 30px; border: 0; text-align: center; color: #333;" name="quantity" id="{{$item->id}}">
                                         </div>
-
+                                        <div class=”btn” style="width: 20px;height: 20px;border-radius: 50%; background-color: #d9d9d9; text-align: center; font-weight: bold; color: #333" onclick="decreaseQuantity({{$item->id}})">-</div>
+                                    </div>
                                 </div>
                                 <div class="menu-price">
                                         <span>${{$item->price}}</span>
-                                        <button class="btn btn-success btn-sm" style="margin-top: 20px;">Add To Cart</button>
+                                        <button class="btn btn-success btn-sm" type="submit" style="margin-top: 20px;">Add To Cart</button>
                                 </div>
                             </div>
                         </a>
@@ -45,4 +44,22 @@
          </div>
     </div>
 </section>
+
+<script>
+    function increaseQuantity(id) {
+        var input = document.getElementById(id);
+        var currentValue = parseInt(input.value);
+        input.value = currentValue + 1;
+    }
+    function decreaseQuantity(id) {
+        var input = document.getElementById(id);
+        var currentValue = parseInt(input.value);
+        if(input.value == 1){
+            input.value = 1;
+        }else{
+            input.value = currentValue - 1;
+        }
+    }
+</script>
+
 

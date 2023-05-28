@@ -15,6 +15,38 @@
         -webkit-appearance: none;
         margin: 0;
         }
+        .cart {
+        position: relative;
+        display: block;
+        width: 28px;
+        height: 28px;
+        height: auto;
+        overflow: hidden;
+        .material-icons {
+            position: relative;
+            top: 4px;
+            z-index: 1;
+            font-size: 24px;
+            color: white;
+        }
+        .count {
+            position: absolute;
+            top: 5px;
+            right: 0;
+            z-index: 2;
+            font-size: 12px;
+            border-radius: 50%;
+            background: #d60b28;
+            width: 16px;
+            height: 16px;
+            line-height:16px;
+            display: block;
+            text-align: center;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+        }
+        }
      </style>
 </head>
 <body>
@@ -46,20 +78,5 @@
      @include('frontend.footer')
      <!-- SCRIPTS -->
      @include('frontend.script')
-
-     <script>
-        function increment() {
-            var input = document.getElementById("quantity");
-            input.value = parseInt(input.value) + 1;
-        }
-
-        function decrement() {
-            var input = document.getElementById("quantity");
-            if (parseInt(input.value) > 1) {
-                input.value = parseInt(input.value) - 1;
-            }
-        }
-     </script>
-
 </body>
 </html>

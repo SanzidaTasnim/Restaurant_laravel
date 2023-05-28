@@ -263,7 +263,6 @@ http://www.templatemo.com/tm-515-eatery
     font-size: 12px;
     font-weight: bold;
     color: #ffffff;
-    padding-right: 22px;
     padding-left: 22px;
     text-transform: uppercase;
   }
@@ -317,6 +316,9 @@ http://www.templatemo.com/tm-515-eatery
 
     .top-nav-collapse .nav li a {
       color: #575757;
+    }
+    .top-nav-collapse .nav li i {
+        color: #575757;
     }
 
     .top-nav-collapse .nav .section-btn a {
