@@ -70,6 +70,13 @@ class HomeController extends Controller
         {
             return redirect()->back();
         }
-
     }
+    public function cartDelete($id)
+    {
+        $cart = cart::find($id);
+        $cart->delete();
+
+        return redirect()->back();
+    }
+
 }

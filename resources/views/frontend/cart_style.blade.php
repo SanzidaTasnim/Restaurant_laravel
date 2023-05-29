@@ -120,7 +120,7 @@ margin: 0;
     font-weight: 300;
   }
 
-  button[class*=btn] {
+  .plus-btn,.minus-btn {
     width: 30px;
     height: 30px;
     background-color: #E1E8EE;
@@ -128,12 +128,7 @@ margin: 0;
     border: none;
     cursor: pointer;
   }
-  .minus-btn img {
-    margin-bottom: 3px;
-  }
-  .plus-btn img {
-    margin-top: 2px;
-  }
+  
 
   button:focus,
   input:focus {

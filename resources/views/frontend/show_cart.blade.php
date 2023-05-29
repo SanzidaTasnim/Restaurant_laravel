@@ -72,39 +72,46 @@
         </div>
 
         <!-- Product #1 -->
-        @foreach ($data as $item)
-            <div class="item">
-                <div class="buttons">
-                <span class="delete-btn">
-                    <i class="fa-sharp fa-solid fa-xmark"></i>
-                </span>
-                <span class="like-btn">
-                    <i class="fa-solid fa-heart"></i>
-                </span>
-                </div>
+        <table>
+            <tr>
+                <td col='10'>
+                    @foreach ($data as $item)
+                    <div class="item">
+                        <div class="image">
+                        <img src="/foodimage/{{$item->image}}" alt="food" style="width: 135px" />
+                        </div>
 
-                <div class="image">
-                <img src="/foodimage/{{$item->image}}" alt="food" style="width: 135px" />
-                </div>
+                        <div class="description" style="width: 134px;">
+                        <span>{{$item->title}}</span>
+                        <span>Delicious Meal</span>
+                        </div>
 
-                <div class="description" style="width: 134px;">
-                <span>{{$item->title}}</span>
-                <span>Delicious Meal</span>
-                </div>
+                        <div class="quantity">
+                        <button class="plus-btn" type="button" name="button">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <input type="text" name="name" value="1">
+                        <button class="minus-btn" type="button" name="button">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        </div>
 
-                <div class="quantity">
-                <button class="plus-btn" type="button" name="button">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-                <input type="text" name="name" value="1">
-                <button class="minus-btn" type="button" name="button">
-                    <i class="fa-solid fa-minus"></i>
-                </button>
-                </div>
+                        <div class="total-price">${{$item->price}}</div>
+                    </div>
+                    @endforeach
+                </td>
+            </tr>
+            @foreach ($data2 as $value)
+            <tr style="position: relative; text-align: right;top: -200px; right: 30px;">
+                <td>
+                    <div style="margin-bottom: 94px;">
+                        <a href="{{url('/cart-delete',$value->id)}}" class="btn btn-primary btn-sm">Remove</a>
+                    </div>
 
-                <div class="total-price">${{$item->price}}</div>
-            </div>
-        @endforeach
+                </td>
+            </tr>
+            @endforeach
+        </table>
 
     </div>
      <!-- FOOTER -->
