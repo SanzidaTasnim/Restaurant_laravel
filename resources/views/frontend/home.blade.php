@@ -31,8 +31,8 @@
         }
         .count {
             position: absolute;
-            top: 5px;
-            right: 0;
+            top: 0;
+            right: 10px;
             z-index: 2;
             font-size: 12px;
             border-radius: 50%;

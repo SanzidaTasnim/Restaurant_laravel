@@ -1,5 +1,5 @@
 
-<section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+<section class="navbar custom-navbar navbar-fixed-top" style="background-color: rgb(165, 42, 42); padding: 10px 0;" role="navigation">
     <div class="container">
          <div class="navbar-header">
               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -15,7 +15,7 @@
          <!-- MENU LINKS -->
          <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-nav-first">
-                   <li><a href="#home" class="smoothScroll">Home</a></li>
+                   <li><a href="{{url('/redirect')}}" class="smoothScroll">Home</a></li>
                    <li><a href="#about" class="smoothScroll">About</a></li>
                    <li><a href="#team" class="smoothScroll">Chef</a></li>
                    <li><a href="#menu" class="smoothScroll">Menu</a></li>

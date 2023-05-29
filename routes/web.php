@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'index']);
 Route::get('/redirect',[HomeController::class,'redirect']);
 Route::post('/addCart/{id}',[HomeController::class,'addCart']);
+Route::get('/showCart/{id}',[HomeController::class,'showCart']);
 
 
 Route::get('/users',[AdminController::class,'users']);
