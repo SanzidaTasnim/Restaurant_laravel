@@ -12,7 +12,7 @@
               @foreach($chefs as $chef)
                 <div class="col-md-4 col-sm-4">
                     <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
-                            <img style="height: 500px;" src="chefImage/{{$chef->image}}" class="img-responsive" alt="Chef_image">
+                            <img style="height: 500px;" src="chefImage/{{$chef->image}}" class="img-responsive img-fluid" alt="Chef_image">
                                 <div class="team-hover">
                                     <div class="team-item">
                                         <h4>You Can Follow Me</h4>

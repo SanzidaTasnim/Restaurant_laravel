@@ -77,34 +77,35 @@
               Shopping Bag
             </div>
             <!-- Product #1 -->
-            <table>
-                <tr>
-                    <td col='10'>
-                        @foreach ($data as $item)
-                        <div class="item">
-                            <div class="image">
-                            <img src="/foodimage/{{$item->image}}" alt="food" style="width: 135px" />
-                            </div>
+            @if(count($data2) > 0)
+                <table>
+                    <tr>
+                        <td col='10'>
+                            @foreach ($data as $item)
+                            <div class="item">
+                                <div class="image">
+                                <img src="/foodimage/{{$item->image}}" alt="food" style="width: 135px" />
+                                </div>
 
-                            <div class="description" style="width: 134px;">
-                                <span>{{$item->title}}</span>
-                                <span>Delicious Meal</span>
-                            </div>
+                                <div class="description" style="width: 134px;">
+                                    <span>{{$item->title}}</span>
+                                    <span>Delicious Meal</span>
+                                </div>
 
-                            <div class="quantity">
-                                <button class="plus-btn" type="button" name="button">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                                <input type="text" name="quantity" value="{{$item->quantity}}">
-                                <button class="minus-btn" type="button" name="button">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
+                                <div class="quantity">
+                                    <button class="plus-btn" type="button" name="button">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                    <input type="text" name="quantity" value="{{$item->quantity}}">
+                                    <button class="minus-btn" type="button" name="button">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+                                </div>
+                                <div class="total-price">${{$item->price}}</div>
                             </div>
-                            <div class="total-price">${{$item->price}}</div>
-                        </div>
-                        @endforeach
-                    </td>
-                </tr>
+                            @endforeach
+                        </td>
+                    </tr>
                     <tr style="position: relative; text-align: right;top: -200px; right: 30px;">
                         <td>
                             @foreach ($data2 as $value)
@@ -114,13 +115,23 @@
                             @endforeach
                         </td>
                     </tr>
-
-            </table>
+                </table>
+            @else
+                <div style="text-align: center; text-transform: capitalize; margin-bottom: 20px;">
+                    <h3 style="color: red;">Your Shopping Bag is empty</h3>
+                </div>
+            @endif
         </div>
 
-        <div class="text-center">
-            <a style="width: 300px;" class="btn btn-primary btn-lg" href="{{ url('/order_page',$user_id)}}">Order Now</a>
-        </div>
+        @if(count($data) > 0)
+            <div class="text-center">
+                <a style="width: 300px;" class="btn btn-primary btn-lg" href="{{ url('/order_page',$user_id)}}">Order Now</a>
+            </div>
+        @else
+            <div class="text-center">
+                <a style="width: 300px;" class="btn btn-primary btn-lg" href="{{ url('/')}}">Go Back To Home</a>
+            </div>
+        @endif
     </form>
      <!-- FOOTER -->
      @include('frontend.footer')

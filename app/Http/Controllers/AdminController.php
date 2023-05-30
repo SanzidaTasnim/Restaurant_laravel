@@ -8,164 +8,295 @@ use App\Models\Menu;
 use App\Models\Reservation;
 use App\Models\Chefs;
 use App\Models\Order;
-
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function users()
     {
-        $users = user::all();
-        return view('backend.users',compact('users'));
+        if(Auth::user()->usertype == 1)
+        {
+            $users = user::all();
+            return view('backend.users',compact('users'));
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
 
     public function deleteUsers($id)
     {
-        $user = user::find($id);
-        $user->delete();
+        if(Auth::user()->usertype == 1)
+        {
+            $user = user::find($id);
+            $user->delete();
 
-        return redirect()->back();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
 
     public function foodMenu()
     {
-        return view('backend.foodMenu');
+        if(Auth::user()->usertype == 1)
+        {
+            return view('backend.foodMenu');
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
 
     public function uploadFoodMenu(Request $request)
     {
-        $menu = new Menu();
-        $image = $request->image;
-        $imageName = time().'.'.$image->getClientOriginalExtension();
-        $request->image->move('foodimage',$imageName);
-        $menu->title = $request->title;
-        $menu->price = $request->price;
-        $menu->content = $request->content;
-        $menu->image = $imageName;
+        if(Auth::user()->usertype == 1)
+        {
+            $menu = new Menu();
+            $image = $request->image;
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('foodimage',$imageName);
+            $menu->title = $request->title;
+            $menu->price = $request->price;
+            $menu->content = $request->content;
+            $menu->image = $imageName;
 
-        $menu->save();
-        return redirect()->back();
+            $menu->save();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
+
     }
     public function allMenu()
     {
-        $menu = menu::all();
-        return view('backend.allMenu',compact('menu'));
+        if(Auth::user()->usertype == 1)
+        {
+            $menu = menu::all();
+            return view('backend.allMenu',compact('menu'));
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     public function menu_delete($id)
     {
-        $menu = menu::find($id);
-        $menu->delete();
+        if(Auth::user()->usertype == 1)
+        {
+            $menu = menu::find($id);
+            $menu->delete();
 
-        return redirect()->back();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     public function menu_update($id)
     {
-        $data = menu::find($id);
-        return view('backend.menu_update',compact('data'));
+        if(Auth::user()->usertype == 1)
+        {
+            $data = menu::find($id);
+            return view('backend.menu_update',compact('data'));
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     public function updated_menu(Request $request, $id)
     {
-        $data = menu::find($id);
-        $image = $request->image;
-
-        if($image)
+        if(Auth::user()->usertype == 1)
         {
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('foodimage',$imageName);
-            $data->image = $imageName;
+            $data = menu::find($id);
+            $image = $request->image;
+
+            if($image)
+            {
+                $imageName = time().'.'.$image->getClientOriginalExtension();
+                $request->image->move('foodimage',$imageName);
+                $data->image = $imageName;
+            }
+
+            $data->title = $request->title;
+            $data->content = $request->content;
+            $data->price = $request->price;
+
+            $data->save();
+            return redirect()->back();
         }
-
-        $data->title = $request->title;
-        $data->content = $request->content;
-        $data->price = $request->price;
-
-        $data->save();
-        return redirect()->back();
+        else
+        {
+            return redirect('login');
+        }
     }
     public function view_reservation(Request $request)
     {
-        $data = new reservation();
+        if(Auth::user()->usertype == 1)
+        {
+            $data = new reservation();
 
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->time = $request->time;
-        $data->date = $request->date;
-        $data->guest = $request->guest;
-        $data->message = $request->message;
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->time = $request->time;
+            $data->date = $request->date;
+            $data->guest = $request->guest;
+            $data->message = $request->message;
 
-        $data->save();
-        return redirect()->back();
+            $data->save();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
+
     }
     public function reservation()
     {
-        $data = reservation::all();
-        return view('backend.reservation',compact('data'));
+        if(Auth::id() && Auth::user()->usertype == 1)
+        {
+            $data = reservation::all();
+            return view('backend.reservation',compact('data'));
+        }
+        else
+        {
+            return redirect('login');
+        }
+
     }
     public function add_chefs()
     {
-        return view('backend.add_chefs');
+        if(Auth::user()->usertype == 1)
+        {
+            return view('backend.add_chefs');
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     public function uploadChefs(Request $request)
     {
-        $chefs = new chefs();
-        $chefs->name = $request->name;
-        $chefs->specialist = $request->specialist;
+        if(Auth::user()->usertype == 1)
+        {
+            $chefs = new chefs();
+            $chefs->name = $request->name;
+            $chefs->specialist = $request->specialist;
 
-        $image = $request->image;
-        $imageName = time().'.'.$image->getClientOriginalExtension();
-        $request->image->move('chefImage', $imageName);
+            $image = $request->image;
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('chefImage', $imageName);
 
-        $chefs->image = $imageName;
+            $chefs->image = $imageName;
 
-        $chefs->save();
-        return redirect()->back();
+            $chefs->save();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     public function view_chefs()
     {
-        $chefs = chefs::all();
-        return view('backend.view_chefs',compact('chefs'));
+        if(Auth::user()->usertype == 1)
+        {
+            $chefs = chefs::all();
+            return view('backend.view_chefs',compact('chefs'));
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     public function chef_delete($id)
     {
-        $chef = chefs::find($id);
+        if(Auth::user()->usertype == 1)
+        {
+            $chef = chefs::find($id);
 
-        $chef->delete();
-        return redirect()->back();
+            $chef->delete();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
+
     }
     public function chef_update($id)
     {
-        $chef = chefs::find($id);
-        return view('backend.updated_chef', compact('chef'));
+        if(Auth::user()->usertype == 1)
+        {
+            $chef = chefs::find($id);
+            return view('backend.updated_chef', compact('chef'));
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     public function updated_chefs(Request $request,$id)
     {
-        $chef = chefs::find($id);
-
-        $image = $request->image;
-        if($image)
+        if(Auth::user()->usertype == 1)
         {
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('chefImage',$imageName);
-            $chef->image = $imageName;
+            $chef = chefs::find($id);
+
+            $image = $request->image;
+            if($image)
+            {
+                $imageName = time().'.'.$image->getClientOriginalExtension();
+                $request->image->move('chefImage',$imageName);
+                $chef->image = $imageName;
+            }
+            $chef->name = $request->name;
+            $chef->specialist = $request->specialist;
+
+
+            $chef->save();
+            return redirect()->back();
         }
-        $chef->name = $request->name;
-        $chef->specialist = $request->specialist;
+        else
+        {
+            return redirect('login');
+        }
 
-
-        $chef->save();
-        return redirect()->back();
     }
     public function orders()
     {
-        $orders = Order::all();
-        return view('backend.orders',compact('orders'));
+        if(Auth::user()->usertype == 1)
+        {
+            $orders = Order::all();
+            return view('backend.orders',compact('orders'));
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
     public function search_order(Request $request)
     {
-        $search = $request->search;
-        $orders = Order::where('name','LIKE', '%'.$search.'%')
-                        ->orWhere('email', 'LIKE', '%'.$search.'%')
-                        ->orWhere('phone', 'LIKE', '%'.$search.'%')
-                        ->get();
-        return view('backend.orders', compact('orders'));
+        if(Auth::user()->usertype == 1)
+        {
+            $search = $request->search;
+            $orders = Order::where('name','LIKE', '%'.$search.'%')
+                            ->orWhere('email', 'LIKE', '%'.$search.'%')
+                            ->orWhere('phone', 'LIKE', '%'.$search.'%')
+                            ->get();
+            return view('backend.orders', compact('orders'));
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
 }

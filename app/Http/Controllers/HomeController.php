@@ -13,9 +13,17 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $menu = menu::all();
-        $chefs = chefs::all();
-        return view('frontend.home',compact('menu','chefs'));
+        if(Auth::id())
+        {
+            return redirect('redirect');
+        }
+        else
+        {
+            $menu = menu::all();
+            $chefs = chefs::all();
+            return view('frontend.home',compact('menu','chefs'));
+        }
+
     }
     public function redirect()
     {
@@ -104,7 +112,8 @@ class HomeController extends Controller
 
             $order->save();
         }
-
+        $cart = cart::where('user_id',$id);
+        $cart->delete();
         return redirect()->back();
     }
 

@@ -99,9 +99,7 @@
                     </tbody>
                 </table>
             @else
-                <div class="d-flex justify-content-center align-items-center" style="margin-top: 200px; color: red; text-transform: capitalize;">
-                    <h2>There is no such orders in the list</h2>
-                </div>
+                
             @endif
         </div>
     </div>
