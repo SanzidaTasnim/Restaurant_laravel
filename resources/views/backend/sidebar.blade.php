@@ -75,13 +75,7 @@
             </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="menu-icon mdi mdi-chart-line"></i>
-            <span class="menu-title">Charts</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{url('/orders')}}">
             <i class="menu-icon mdi mdi-table"></i>
             <span class="menu-title">Orders</span>
           </a>

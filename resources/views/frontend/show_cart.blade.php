@@ -17,6 +17,10 @@
         -webkit-appearance: none;
         margin: 0;
         }
+        .problem.second-element{
+            position: relative;
+            top:90px;
+        }
         .cart {
         position: relative;
         display: block;
@@ -49,6 +53,7 @@
             font-weight: bold;
         }
         }
+
      </style>
 </head>
 <body>
@@ -65,94 +70,103 @@
      <!-- NAVBAR -->
      @include('frontend.header2')
 
-     <div class="shopping-cart">
-        <!-- Title -->
-        <div class="title">
-          Shopping Bag
+    <form action="">
+        <div class="shopping-cart">
+            <!-- Title -->
+            <div class="title">
+              Shopping Bag
+            </div>
+            <!-- Product #1 -->
+            <table>
+                <tr>
+                    <td col='10'>
+                        @foreach ($data as $item)
+                        <div class="item">
+                            <div class="image">
+                            <img src="/foodimage/{{$item->image}}" alt="food" style="width: 135px" />
+                            </div>
+
+                            <div class="description" style="width: 134px;">
+                                <span>{{$item->title}}</span>
+                                <span>Delicious Meal</span>
+                            </div>
+
+                            <div class="quantity">
+                                <button class="plus-btn" type="button" name="button">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                                <input type="text" name="quantity" value="{{$item->quantity}}">
+                                <button class="minus-btn" type="button" name="button">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                            </div>
+                            <div class="total-price">${{$item->price}}</div>
+                        </div>
+                        @endforeach
+                    </td>
+                </tr>
+                    <tr style="position: relative; text-align: right;top: -200px; right: 30px;">
+                        <td>
+                            @foreach ($data2 as $value)
+                                <div class="problem" >
+                                    <a href="{{url('/cart-delete',$value->id)}}" class="btn btn-primary btn-sm">Remove</a>
+                                </div>
+                            @endforeach
+                        </td>
+                    </tr>
+
+            </table>
         </div>
 
-        <!-- Product #1 -->
-        <table>
-            <tr>
-                <td col='10'>
-                    @foreach ($data as $item)
-                    <div class="item">
-                        <div class="image">
-                        <img src="/foodimage/{{$item->image}}" alt="food" style="width: 135px" />
-                        </div>
-
-                        <div class="description" style="width: 134px;">
-                        <span>{{$item->title}}</span>
-                        <span>Delicious Meal</span>
-                        </div>
-
-                        <div class="quantity">
-                        <button class="plus-btn" type="button" name="button">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                        <input type="text" name="name" value="1">
-                        <button class="minus-btn" type="button" name="button">
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-                        </div>
-
-                        <div class="total-price">${{$item->price}}</div>
-                    </div>
-                    @endforeach
-                </td>
-            </tr>
-            @foreach ($data2 as $value)
-            <tr style="position: relative; text-align: right;top: -200px; right: 30px;">
-                <td>
-                    <div style="margin-bottom: 94px;">
-                        <a href="{{url('/cart-delete',$value->id)}}" class="btn btn-primary btn-sm">Remove</a>
-                    </div>
-
-                </td>
-            </tr>
-            @endforeach
-        </table>
-
-    </div>
+        <div class="text-center">
+            <a style="width: 300px;" class="btn btn-primary btn-lg" href="{{ url('/order_page',$user_id)}}">Order Now</a>
+        </div>
+    </form>
      <!-- FOOTER -->
      @include('frontend.footer')
      <!-- SCRIPTS -->
      @include('frontend.script')
      <script>
-        $('.like-btn').on('click', function() {
-            $(this).toggleClass('is-active');
-        });
+        const element = document.getElementsByClassName('problem');
+        element[1].classList.add("second-element");
+        // const item = element[1].classList.add("second-element");
+        // console.log(item);
 
-        $('.minus-btn').on('click', function(e) {
-            e.preventDefault();
-            var $this = $(this);
-            var $input = $this.closest('div').find('input');
-            var value = parseInt($input.val());
 
-            if (value &amp;amp;gt; 1) {
-                value = value - 1;
-            } else {
-                value = 0;
-            }
+        // $('.like-btn').on('click', function() {
+        //     $(this).toggleClass('is-active');
+        // });
 
-        $input.val(value);
+        // $('.minus-btn').on('click', function(e) {
+        //     e.preventDefault();
+        //     var $this = $(this);
+        //     var $input = $this.closest('div').find('input');
+        //     var value = parseInt($input.val());
 
-        });
+        //     if (value &amp;amp;gt; 1) {
+        //         value = value - 1;
+        //     } else {
+        //         value = 0;
+        //     }
 
-        $('.plus-btn').on('click', function(e) {
-            e.preventDefault();
-            var $this = $(this);
-            var $input = $this.closest('div').find('input');
-            var value = parseInt($input.val());
+        // $input.val(value);
 
-            if (value &amp;amp;lt; 100) {
-                value = value + 1;
-            } else {
-                value =100;
-            }
+        // });
 
-            $input.val(value);
-        });
+        // $('.plus-btn').on('click', function(e) {
+        //     e.preventDefault();
+        //     var $this = $(this);
+        //     var $input = $this.closest('div').find('input');
+        //     var value = parseInt($input.val());
+
+        //     if (value &amp;amp;lt; 100) {
+        //         value = value + 1;
+        //     } else {
+        //         value =100;
+        //     }
+
+        //     $input.val(value);
+        // });
      </script>
 </body>
 </html>

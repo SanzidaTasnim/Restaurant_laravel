@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Menu;
 use App\Models\Reservation;
 use App\Models\Chefs;
+use App\Models\Order;
 
 
 class AdminController extends Controller
@@ -152,5 +153,19 @@ class AdminController extends Controller
 
         $chef->save();
         return redirect()->back();
+    }
+    public function orders()
+    {
+        $orders = Order::all();
+        return view('backend.orders',compact('orders'));
+    }
+    public function search_order(Request $request)
+    {
+        $search = $request->search;
+        $orders = Order::where('name','LIKE', '%'.$search.'%')
+                        ->orWhere('email', 'LIKE', '%'.$search.'%')
+                        ->orWhere('phone', 'LIKE', '%'.$search.'%')
+                        ->get();
+        return view('backend.orders', compact('orders'));
     }
 }

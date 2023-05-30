@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
 use App\Models\Chefs;
 use App\Models\Cart;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -75,6 +76,34 @@ class HomeController extends Controller
     {
         $cart = cart::find($id);
         $cart->delete();
+
+        return redirect()->back();
+    }
+    public function order_page($id)
+    {
+        $user_id = Auth::user()->id;
+        $count = cart::where('user_id', $id)->count();
+        return view('frontend.order_page',compact('user_id','count'));
+    }
+
+    public function confirm_order(Request $request, $id)
+    {
+        $data = cart::where('user_id', $id)
+                ->join('menus', 'carts.food_id', '=', 'menus.id')
+                ->get();
+        foreach($data as $item)
+        {
+            $order = new Order();
+            $order->foodName = $item->title;
+            $order->price = $item->price;
+            $order->quantity = $item->quantity;
+            $order->name = $request->name;
+            $order->email = $request->email;
+            $order->phone = $request->phone;
+            $order->address = $request->address;
+
+            $order->save();
+        }
 
         return redirect()->back();
     }

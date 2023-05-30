@@ -11,7 +11,7 @@ margin: 0;
 }
 .shopping-cart {
     width: 750px;
-    height: 423px;
+    /* height: 423px; */
     margin: 80px auto;
     margin-top: 170px;
     background: #FFFFFF;
@@ -128,7 +128,7 @@ margin: 0;
     border: none;
     cursor: pointer;
   }
-  
+
 
   button:focus,
   input:focus {

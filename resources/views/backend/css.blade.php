@@ -8,6 +8,7 @@
 <!-- Plugin css for this page -->
 <link rel="stylesheet" href="backend/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
 <link rel="stylesheet" href="backend/js/select.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- End plugin css for this page -->
 <!-- inject:css -->
 <link rel="stylesheet" href="backend/css/vertical-layout-light/style.css">

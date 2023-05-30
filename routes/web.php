@@ -20,6 +20,8 @@ Route::get('/redirect',[HomeController::class,'redirect']);
 Route::post('/addCart/{id}',[HomeController::class,'addCart']);
 Route::get('/showCart/{id}',[HomeController::class,'showCart']);
 Route::get('/cart-delete/{id}',[HomeController::class,'cartDelete']);
+Route::get('/order_page/{id}',[HomeController::class,'order_page']);
+Route::post('/confirm_order/{id}',[HomeController::class,'confirm_order']);
 
 
 Route::get('/users',[AdminController::class,'users']);
@@ -38,6 +40,8 @@ Route::get('/view_chefs',[AdminController::class,'view_chefs']);
 Route::get('/chef_delete/{id}',[AdminController::class,'chef_delete']);
 Route::get('/chef_update/{id}',[AdminController::class,'chef_update']);
 Route::post('/updated_chefs/{id}',[AdminController::class,'updated_chefs']);
+Route::get('/orders',[AdminController::class,'orders']);
+Route::post('/search_order',[AdminController::class,'search_order']);
 
 Route::middleware([
     'auth:sanctum',
